@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1 class="main-heading">Flood Prediction</h1>
+
+    <div class="container">
+        <h2>Flood Prediction</h2>
+        <div class="scrollable-form">
+            <form action="/predict" method="post">
+                <label>Year:</label>
+                <input type="number" name="year" required>
+
+                <label>Location:</label>
+                <input type="text" name="location" required>
+
+                <label>Latitude:</label>
+                <input type="number" name="latitude" step="0.01" required>
+
+                <label>Longitude:</label>
+                <input type="number" name="longitude" step="0.01" required>
+
+                <label>Precipitation (mm):</label>
+                <input type="number" name="precipitation" step="0.1" required>
+
+                <label>Temperature (°C):</label>
+                <input type="number" name="temperature" step="0.1" required>
+
+                <label>Humidity (%):</label>
+                <input type="number" name="humidity" step="0.1" required>
+
+                <label>Soil Moisture:</label>
+                <input type="number" name="soil_moisture" step="0.01" required>
+
+                <label>River Level (m):</label>
+                <input type="number" name="river_level" step="0.1" required>
+
+                <label>Elevation (m):</label>
+                <input type="number" name="elevation" required>
+
+                <label>Land Cover Type:</label>
+                <input type="text" name="land_cover" required>
+
+                <label>Drainage Capacity (%):</label>
+                <input type="number" name="drainage_capacity" step="0.1" required>
+
+                <label>Urbanization Index:</label>
+                <input type="number" name="urbanization_index" step="0.1" required>
+
+                <label>Deforestation Index:</label>
+                <input type="number" name="deforestation_index" step="0.1" required>
+
+                <button type="submit">Predict</button>
+            </form>
+        </div>
+
+        {% if prediction %}
+            <div class="result">
+                <h3>Prediction: {{ prediction }}</h3>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
